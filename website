@@ -1,1 +1,2426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Twin Palms Insurance Group provides personalized home, auto, flood, and business insurance throughout St. Augustine and nearby Florida communities.">
+  <meta name="theme-color" content="#11110f">
+  <title>Twin Palms Insurance Group | St. Augustine Insurance</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #f5b84b;
+      --gold-deep: #d99827;
+      --gold-pale: #fff2d7;
+      --ink: #336699;
+      --charcoal: #24231f;
+      --sand: #f6f1e8;
+      --cream: #fffdf8;
+      --white: #ffffff;
+      --muted: #6e6a61;
+      --line: rgba(17, 17, 15, 0.12);
+      --shadow-sm: 0 12px 35px rgba(25, 22, 15, 0.08);
+      --shadow-lg: 0 28px 80px rgba(25, 22, 15, 0.18);
+      --radius-sm: 14px;
+      --radius-md: 24px;
+      --radius-lg: 36px;
+      --container: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 110px;
+    }
+
+    body {
+      overflow-x: hidden;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--container));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 110px 0;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--gold-deep);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .section-kicker::before {
+      width: 30px;
+      height: 2px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1,
+    h2,
+    h3,
+    .brand-name {
+      font-family: "Playfair Display", serif;
+      line-height: 1.08;
+    }
+
+    h1 {
+      max-width: 850px;
+      color: var(--white);
+      font-size: clamp(3rem, 6.4vw, 6.6rem);
+      font-weight: 600;
+      letter-spacing: -0.045em;
+    }
+
+    h2 {
+      font-size: clamp(2.35rem, 4.5vw, 4.4rem);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+    }
+
+    h3 {
+      font-size: 1.45rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .lead {
+      max-width: 680px;
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 54px;
+      padding: 0 25px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.93rem;
+      font-weight: 700;
+      transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--ink);
+      box-shadow: 0 12px 30px rgba(245, 184, 75, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: #ffc65e;
+    }
+
+    .btn-dark {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .btn-outline-light {
+      border-color: rgba(255, 255, 255, 0.52);
+      color: var(--white);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-outline-light:hover {
+      border-color: var(--white);
+      background: var(--white);
+      color: var(--ink);
+    }
+
+    .arrow {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+
+    .btn:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    .topbar {
+      position: relative;
+      z-index: 1001;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 0.94rem;
+      font-weight: 700;
+      letter-spacing: 0.012em;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 38px;
+    }
+
+    .topbar-links,
+    .topbar-note {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .topbar a:hover {
+      color: var(--gold);
+    }
+
+    .site-header {
+      position: absolute;
+      top: 38px;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      background: linear-gradient(180deg, rgba(7, 20, 34, 0.66), rgba(7, 20, 34, 0.34));
+      color: var(--white);
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      transition: background 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, transform 0.25s ease;
+    }
+
+    .site-header.scrolled {
+      position: fixed;
+      top: 0;
+      border-bottom-color: rgba(51, 102, 153, 0.14);
+      background: rgba(255, 253, 248, 0.96);
+      color: var(--ink);
+      text-shadow: none;
+      box-shadow: 0 10px 35px rgba(17, 17, 15, 0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 86px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      min-width: max-content;
+    }
+
+    .site-logo {
+      width: clamp(195px, 19vw, 260px);
+      height: auto;
+      max-height: 70px;
+      object-fit: contain;
+      filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.58));
+    }
+
+    .site-header.scrolled .site-logo {
+      filter: drop-shadow(0 2px 5px rgba(17, 17, 15, 0.12));
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      margin-left: auto;
+      margin-right: 30px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.012em;
+    }
+
+    .desktop-nav a {
+      position: relative;
+      padding: 10px 1px;
+    }
+
+    .desktop-nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: -7px;
+      left: 0;
+      height: 2px;
+      background: var(--gold);
+      content: "";
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.25s ease;
+    }
+
+    .desktop-nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .header-cta {
+      min-height: 46px;
+      padding-inline: 20px;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .menu-toggle span,
+    .menu-toggle span::before,
+    .menu-toggle span::after {
+      display: block;
+      width: 19px;
+      height: 2px;
+      margin: auto;
+      background: currentColor;
+      content: "";
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .menu-toggle span {
+      position: relative;
+    }
+
+    .menu-toggle span::before {
+      position: absolute;
+      top: -6px;
+    }
+
+    .menu-toggle span::after {
+      position: absolute;
+      top: 6px;
+    }
+
+    .menu-toggle.active span {
+      background: transparent;
+    }
+
+    .menu-toggle.active span::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    .menu-toggle.active span::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: grid;
+      align-content: center;
+      padding: 110px 28px 40px;
+      background: var(--ink);
+      color: var(--white);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-15px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mobile-menu nav {
+      display: grid;
+      gap: 17px;
+    }
+
+    .mobile-menu nav a {
+      padding-block: 9px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 10vw, 3.2rem);
+    }
+
+    .mobile-contact {
+      display: grid;
+      gap: 8px;
+      margin-top: 38px;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .hero {
+      position: relative;
+      display: flex;
+      min-height: 860px;
+      align-items: flex-end;
+      overflow: hidden;
+      background: var(--charcoal) url("hero-poster.jpg") center center / cover no-repeat;
+      isolation: isolate;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transform: scale(1.03);
+      animation: heroZoom 16s ease-out forwards;
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(10, 10, 8, 0.88) 0%, rgba(10, 10, 8, 0.54) 48%, rgba(10, 10, 8, 0.2) 100%),
+        linear-gradient(180deg, rgba(10, 10, 8, 0.16), rgba(10, 10, 8, 0.5));
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero::after {
+      position: absolute;
+      right: -100px;
+      bottom: -155px;
+      z-index: -1;
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(245, 184, 75, 0.28);
+      border-radius: 50%;
+      content: "";
+      box-shadow: 0 0 0 70px rgba(245, 184, 75, 0.055), 0 0 0 140px rgba(245, 184, 75, 0.035);
+      pointer-events: none;
+    }
+
+    @keyframes heroZoom {
+      to { transform: scale(1); }
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 50px;
+      align-items: end;
+      padding-top: 190px;
+      padding-bottom: 95px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: var(--gold);
+      font-size: 0.77rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker::before {
+      width: 38px;
+      height: 2px;
+      background: currentColor;
+      content: "";
+    }
+
+    .hero-copy > p {
+      max-width: 700px;
+      margin-top: 25px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: clamp(1.06rem, 1.5vw, 1.25rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .hero-trust {
+      padding: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radius-md);
+      background: rgba(12, 12, 10, 0.48);
+      color: var(--white);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-trust strong {
+      display: block;
+      color: var(--gold);
+      font-family: "Playfair Display", serif;
+      font-size: 2.2rem;
+      line-height: 1;
+    }
+
+    .hero-trust span {
+      display: block;
+      margin-top: 9px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.89rem;
+    }
+
+    .hero-trust hr {
+      margin: 22px 0;
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .trust-strip {
+      position: relative;
+      z-index: 4;
+      margin-top: -28px;
+    }
+
+    .trust-strip-inner {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-radius: 20px;
+      background: var(--white);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .trust-item {
+      display: flex;
+      min-height: 105px;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 22px;
+      border-right: 1px solid var(--line);
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .trust-item:last-child {
+      border-right: 0;
+    }
+
+    .trust-icon {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      flex: 0 0 auto;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--gold-pale);
+      color: var(--gold-deep);
+      font-size: 1rem;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: clamp(50px, 8vw, 105px);
+      align-items: center;
+    }
+
+    .image-composition {
+      position: relative;
+      min-height: 650px;
+    }
+
+    .image-main {
+      position: absolute;
+      inset: 0 70px 70px 0;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .image-main img,
+    .image-small img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+    }
+
+    .image-main img[src$="neighborhood.jpg"] {
+      object-position: center center;
+    }
+
+    .image-small img[src$="chairs.jpg"] {
+      object-position: center 45%;
+    }
+
+    .image-small {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 48%;
+      height: 42%;
+      overflow: hidden;
+      border: 10px solid var(--cream);
+      border-radius: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .experience-badge {
+      position: absolute;
+      top: 42px;
+      right: 22px;
+      display: grid;
+      width: 150px;
+      height: 150px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--ink);
+      text-align: center;
+      transform: rotate(7deg);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .experience-badge strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 2.6rem;
+      line-height: 0.9;
+    }
+
+    .experience-badge span {
+      display: block;
+      margin-top: 5px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .intro-copy h2 {
+      max-width: 700px;
+    }
+
+    .intro-copy .lead {
+      margin-top: 25px;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px 26px;
+      margin: 34px 0;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      list-style: none;
+      font-size: 0.94rem;
+      font-weight: 600;
+    }
+
+    .feature-list li::before {
+      display: grid;
+      width: 24px;
+      height: 24px;
+      flex: 0 0 auto;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--gold-pale);
+      color: var(--gold-deep);
+      content: "✓";
+      font-size: 0.75rem;
+      font-weight: 900;
+    }
+
+    .principal-agent {
+      position: relative;
+      overflow: hidden;
+      background: var(--sand);
+    }
+
+    .principal-agent::before {
+      position: absolute;
+      top: -240px;
+      right: -210px;
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(51, 102, 153, 0.12);
+      border-radius: 50%;
+      content: "";
+      box-shadow: 0 0 0 78px rgba(51, 102, 153, 0.035), 0 0 0 156px rgba(51, 102, 153, 0.02);
+      pointer-events: none;
+    }
+
+    .agent-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 480px minmax(0, 1fr);
+      gap: clamp(48px, 8vw, 105px);
+      align-items: center;
+    }
+
+    .agent-photo-wrap {
+      position: relative;
+      width: 480px;
+      margin-inline: auto;
+    }
+
+    .agent-photo-placeholder {
+      position: relative;
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: auto;
+      object-fit: contain;
+      overflow: hidden;
+      border: 10px solid var(--white);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .agent-photo-placeholder::before {
+      position: absolute;
+      top: 18%;
+      width: 31%;
+      aspect-ratio: 1;
+      border: 3px solid rgba(255, 255, 255, 0.66);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .agent-photo-placeholder::after {
+      position: absolute;
+      bottom: 16%;
+      width: 62%;
+      height: 39%;
+      border: 3px solid rgba(255, 255, 255, 0.66);
+      border-bottom: 0;
+      border-radius: 50% 50% 0 0;
+      content: "";
+    }
+
+    .agent-photo-placeholder span {
+      position: absolute;
+      right: 22px;
+      bottom: 22px;
+      left: 22px;
+      z-index: 1;
+      padding: 13px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 14px;
+      background: rgba(17, 17, 15, 0.42);
+      color: var(--white);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-align: center;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .agent-role-card {
+      position: absolute;
+      right: -24px;
+      bottom: 38px;
+      z-index: 2;
+      max-width: 190px;
+      padding: 20px 22px;
+      border-radius: 18px;
+      background: var(--gold);
+      color: var(--ink);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .agent-role-card strong,
+    .agent-role-card span {
+      display: block;
+    }
+
+    .agent-role-card strong {
+      font-family: "Playfair Display", serif;
+      font-size: 1.32rem;
+      line-height: 1.15;
+    }
+
+    .agent-role-card span {
+      margin-top: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .agent-copy {
+      max-width: 720px;
+    }
+
+    .agent-copy h2 {
+      color: var(--ink);
+    }
+
+    .agent-copy .lead {
+      margin-top: 24px;
+      color: var(--charcoal);
+    }
+
+    .agent-copy p:not(.lead) {
+      margin-top: 19px;
+    }
+
+    .agent-values {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .agent-values span {
+      padding: 9px 14px;
+      border: 1px solid rgba(51, 102, 153, 0.16);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      box-shadow: 0 8px 22px rgba(25, 22, 15, 0.045);
+    }
+
+    .agent-copy .btn {
+      margin-top: 32px;
+    }
+
+    .services {
+      background: var(--sand);
+    }
+
+    .section-heading-row {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .section-heading-row .lead {
+      max-width: 520px;
+    }
+
+    .service-tabs {
+      display: inline-flex;
+      gap: 6px;
+      padding: 6px;
+      border-radius: 999px;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .service-tab {
+      min-height: 46px;
+      padding: 0 22px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .service-tab.active {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      position: relative;
+      display: flex;
+      min-height: 305px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30px;
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+      background: var(--white);
+      box-shadow: 0 10px 35px rgba(20, 18, 12, 0.04);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    .service-card:hover {
+      border-color: rgba(245, 184, 75, 0.7);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-7px);
+    }
+
+    .service-card[hidden] {
+      display: none;
+    }
+
+    .service-icon {
+      display: grid;
+      width: 58px;
+      height: 58px;
+      place-items: center;
+      border-radius: 18px;
+      background: var(--gold-pale);
+      color: var(--gold-deep);
+      font-size: 1.45rem;
+    }
+
+    .service-card h3 {
+      margin-top: 42px;
+    }
+
+    .service-card p {
+      margin-top: 12px;
+      font-size: 0.91rem;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .process {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .process .section-kicker,
+    .process p {
+      color: rgba(255, 255, 255, 0.66);
+    }
+
+    .process .section-kicker {
+      color: var(--gold);
+    }
+
+    .process h2 {
+      color: var(--white);
+    }
+
+    .process-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-top: 65px;
+    }
+
+    .process-grid::before {
+      position: absolute;
+      top: 37px;
+      right: 8%;
+      left: 8%;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.15);
+      content: "";
+    }
+
+    .process-step {
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-number {
+      display: grid;
+      width: 74px;
+      height: 74px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--gold);
+      font-family: "Playfair Display", serif;
+      font-size: 1.3rem;
+      box-shadow: 0 0 0 8px var(--ink);
+    }
+
+    .process-step h3 {
+      margin-top: 25px;
+      color: var(--white);
+      font-size: 1.35rem;
+    }
+
+    .process-step p {
+      margin-top: 13px;
+      font-size: 0.91rem;
+    }
+
+    .coastal-grid {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      min-height: 660px;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      background: var(--ink);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .coastal-image {
+      min-height: 520px;
+      background-image:
+        linear-gradient(0deg, rgba(17, 17, 15, 0.16), rgba(17, 17, 15, 0.02)),
+        url("https://lirp.cdn-website.com/a03b042b/dms3rep/multi/opt/photo%2B3-799w.jpeg");
+      background-position: center;
+      background-size: cover;
+    }
+
+    .coastal-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(45px, 7vw, 90px);
+      color: var(--white);
+    }
+
+    .coastal-copy .section-kicker {
+      color: var(--gold);
+    }
+
+    .coastal-copy h2 {
+      color: var(--white);
+      font-size: clamp(2.4rem, 4.3vw, 4rem);
+    }
+
+    .coastal-copy p {
+      margin-top: 24px;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .coastal-copy .btn {
+      align-self: flex-start;
+      margin-top: 34px;
+    }
+
+    .testimonials {
+      overflow: hidden;
+      background: var(--sand);
+    }
+
+    .reviews-top {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .rating-card {
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      padding: 16px 20px;
+      border-radius: 18px;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .rating-number {
+      font-family: "Playfair Display", serif;
+      font-size: 2.15rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .stars {
+      color: var(--gold-deep);
+      letter-spacing: 0.08em;
+    }
+
+    .rating-card small {
+      display: block;
+      color: var(--muted);
+    }
+
+    .review-track-wrap {
+      margin-top: 50px;
+      overflow: hidden;
+    }
+
+    .review-track {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .review-card {
+      min-width: calc((100% - 40px) / 3);
+      padding: 35px;
+      border-radius: var(--radius-md);
+      background: var(--white);
+      box-shadow: 0 12px 40px rgba(25, 22, 15, 0.05);
+    }
+
+    .review-quote {
+      color: var(--gold-deep);
+      font-family: "Playfair Display", serif;
+      font-size: 3.5rem;
+      line-height: 0.8;
+    }
+
+    .review-card blockquote {
+      margin-top: 20px;
+      color: var(--charcoal);
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      line-height: 1.55;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .review-author strong {
+      display: block;
+    }
+
+    .review-author span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .review-controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .review-button {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--ink);
+      font-size: 1.1rem;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .review-button:hover {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .areas-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(45px, 8vw, 100px);
+      align-items: center;
+    }
+
+    .area-photo {
+      position: relative;
+      min-height: 590px;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      background-image:
+        linear-gradient(0deg, rgba(17, 17, 15, 0.3), transparent 50%),
+        url("https://lirp.cdn-website.com/a03b042b/dms3rep/multi/opt/photo%2B4-799w.jpg");
+      background-position: center;
+      background-size: cover;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .area-photo-label {
+      position: absolute;
+      right: 25px;
+      bottom: 25px;
+      left: 25px;
+      padding: 24px;
+      border-radius: 20px;
+      background: rgba(17, 17, 15, 0.78);
+      color: var(--white);
+      backdrop-filter: blur(12px);
+    }
+
+    .area-photo-label strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 1.45rem;
+    }
+
+    .area-photo-label span {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem;
+    }
+
+    .area-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .area-list div {
+      display: flex;
+      min-height: 64px;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--white);
+      font-weight: 700;
+      box-shadow: 0 8px 25px rgba(25, 22, 15, 0.04);
+    }
+
+    .area-list div::before {
+      color: var(--gold-deep);
+      content: "●";
+      font-size: 0.58rem;
+    }
+
+    .contact-section {
+      position: relative;
+      overflow: hidden;
+      background: var(--ink) url("footer.jpg") center center / cover no-repeat;
+      color: var(--white);
+      isolation: isolate;
+    }
+
+    .contact-section::before {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(15, 38, 65, 0.675) 0%, rgba(24, 56, 91, 0.615) 48%, rgba(13, 29, 48, 0.645) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.27));
+      content: "";
+      pointer-events: none;
+    }
+
+    .contact-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 0.86fr 1.14fr;
+      gap: clamp(45px, 8vw, 100px);
+      align-items: start;
+    }
+
+    .contact-copy .section-kicker {
+      color: var(--gold);
+    }
+
+    .contact-copy h2,
+    .contact-copy p {
+      color: var(--white);
+    }
+
+    .contact-copy p {
+      margin-top: 25px;
+      color: rgba(255, 255, 255, 0.88);
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.34);
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 18px;
+      margin-top: 38px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: rgba(255, 255, 255, 0.96);
+      font-weight: 700;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.36);
+    }
+
+    .contact-detail-icon {
+      display: grid;
+      width: 43px;
+      height: 43px;
+      flex: 0 0 auto;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(245, 184, 75, 0.13);
+      color: var(--gold);
+    }
+
+    .contact-cta {
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: clamp(32px, 5vw, 56px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius-lg);
+      background: rgba(10, 26, 43, 0.72);
+      box-shadow: 0 24px 65px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(18px);
+    }
+
+    .contact-cta-label {
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .contact-cta h3 {
+      max-width: 520px;
+      margin-top: 16px;
+      color: var(--white);
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+    }
+
+    .contact-cta p {
+      max-width: 560px;
+      margin-top: 18px;
+      color: rgba(255, 255, 255, 0.90);
+    }
+
+    .contact-cta .btn {
+      margin-top: 30px;
+    }
+
+    .contact-cta-note {
+      margin-top: 16px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.82rem;
+    }
+
+    .site-footer {
+      position: relative;
+      background: var(--ink);
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .footer-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(130px, 0.55fr) minmax(190px, 0.75fr);
+      column-gap: clamp(24px, 3.5vw, 44px);
+      row-gap: 34px;
+      align-items: start;
+      padding: clamp(48px, 6vw, 72px) 0 clamp(42px, 5vw, 64px);
+    }
+
+    .footer-brand,
+    .footer-column {
+      min-width: 0;
+    }
+
+    .footer-brand .brand {
+      color: var(--white);
+    }
+
+    .footer-brand .site-logo {
+      width: clamp(190px, 22vw, 260px);
+      max-width: 100%;
+      max-height: none;
+    }
+
+
+    .footer-brand p {
+      max-width: 500px;
+      margin-top: clamp(18px, 2vw, 24px);
+      color: var(--white);
+      font-size: clamp(0.92rem, 1.15vw, 1rem);
+      font-weight: 600;
+      line-height: 1.7;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 17px;
+      color: var(--white);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-column nav {
+      display: grid;
+      gap: 9px;
+    }
+
+    .footer-column a {
+      color: var(--white);
+      font-weight: 700;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
+
+    .footer-column a:hover {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px clamp(24px, 4vw, 54px);
+      padding: clamp(18px, 2.5vw, 24px) 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      color: var(--white);
+      font-size: clamp(0.74rem, 1vw, 0.8rem);
+      font-weight: 650;
+      line-height: 1.55;
+    }
+
+    .footer-bottom > span {
+      flex: 1 1 320px;
+      min-width: 0;
+    }
+
+    .footer-bottom > span:last-child {
+      text-align: right;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1050px) {
+      .desktop-nav,
+      .header-cta {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-trust {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        max-width: 620px;
+      }
+
+      .hero-trust hr {
+        display: none;
+      }
+
+      .trust-strip-inner {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .trust-item:nth-child(3) {
+        border-right: 0;
+      }
+
+      .trust-item:nth-child(n+4) {
+        border-top: 1px solid var(--line);
+      }
+
+      .intro-grid,
+      .areas-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .agent-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .agent-photo-wrap {
+        width: 480px;
+        max-width: 100%;
+      }
+
+      .image-composition {
+        max-width: 720px;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px 30px;
+      }
+
+      .process-grid::before {
+        display: none;
+      }
+
+      .coastal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .coastal-image {
+        min-height: 490px;
+      }
+
+      .review-card {
+        min-width: calc((100% - 20px) / 2);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .section {
+        padding: 80px 0;
+      }
+
+      .container {
+        width: min(calc(100% - 28px), var(--container));
+      }
+
+      .topbar-note {
+        display: none;
+      }
+
+      .topbar-inner {
+        justify-content: center;
+      }
+
+      .topbar-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .site-header {
+        top: 38px;
+      }
+
+      .site-header.scrolled {
+        top: 0;
+      }
+
+      .nav-wrap {
+        min-height: 75px;
+      }
+
+      .site-logo {
+        width: 190px;
+        max-height: 60px;
+      }
+
+      .hero {
+        min-height: 790px;
+      }
+
+      .hero-video {
+        object-position: 62% center;
+      }
+
+      .hero::before {
+        background: linear-gradient(180deg, rgba(10, 10, 8, 0.45), rgba(10, 10, 8, 0.82));
+      }
+
+      .hero-inner {
+        gap: 35px;
+        padding-top: 180px;
+        padding-bottom: 68px;
+      }
+
+      .hero-trust {
+        grid-template-columns: 1fr 1fr;
+        padding: 20px;
+      }
+
+      .hero-trust strong {
+        font-size: 1.8rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .trust-strip {
+        margin-top: 0;
+      }
+
+      .trust-strip .container {
+        width: 100%;
+      }
+
+      .trust-strip-inner {
+        grid-template-columns: 1fr;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .trust-item,
+      .trust-item:nth-child(3) {
+        min-height: 70px;
+        justify-content: flex-start;
+        border-top: 1px solid var(--line);
+        border-right: 0;
+        padding-inline: 26px;
+        text-align: left;
+      }
+
+      .image-composition {
+        min-height: 500px;
+      }
+
+      .image-main {
+        inset: 0 30px 55px 0;
+      }
+
+      .image-small {
+        width: 53%;
+        height: 38%;
+        border-width: 7px;
+      }
+
+      .experience-badge {
+        top: 22px;
+        right: 3px;
+        width: 120px;
+        height: 120px;
+      }
+
+      .experience-badge strong {
+        font-size: 2.1rem;
+      }
+
+      .feature-list,
+      .area-list {
+        grid-template-columns: 1fr;
+      }
+
+      .agent-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .agent-photo-wrap {
+        width: 480px;
+        max-width: calc(100% - 20px);
+      }
+
+      .agent-role-card {
+        right: -10px;
+        bottom: 28px;
+      }
+
+      .section-heading-row,
+      .reviews-top {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .service-tabs {
+        width: 100%;
+      }
+
+      .service-tab {
+        flex: 1;
+        padding-inline: 12px;
+      }
+
+      .services-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        min-height: 270px;
+      }
+
+      .coastal-image {
+        min-height: 390px;
+      }
+
+      .review-card {
+        min-width: 100%;
+      }
+
+      .area-photo {
+        min-height: 500px;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 28px;
+        row-gap: 32px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-brand p {
+        max-width: 620px;
+      }
+
+      .footer-bottom {
+        align-items: flex-start;
+      }
+
+      .footer-bottom > span,
+      .footer-bottom > span:last-child {
+        flex-basis: 100%;
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .contact-section {
+        background-position: 58% center;
+      }
+
+      .agent-photo-wrap {
+        width: 100%;
+      }
+
+      .agent-photo-placeholder {
+        border-width: 7px;
+        border-radius: 26px;
+      }
+
+      .agent-role-card {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        max-width: none;
+        margin: -18px 16px 0;
+        text-align: center;
+      }
+
+      .agent-values {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .agent-values span {
+        text-align: center;
+      }
+
+      .agent-copy .btn {
+        width: 100%;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 44px 0 36px;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+        padding-bottom: 30px;
+      }
+
+      .footer-brand .site-logo {
+        width: min(220px, 78vw);
+      }
+
+      .footer-column {
+        padding: 24px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.16);
+      }
+
+      .footer-column h4 {
+        margin-bottom: 14px;
+      }
+
+      .footer-column nav {
+        gap: 11px;
+      }
+
+      .footer-bottom {
+        gap: 8px;
+        padding: 18px 0 22px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .footer-brand .site-logo {
+        width: min(200px, 82vw);
+      }
+
+      .footer-brand p,
+      .footer-column a {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-links">
+        <a href="tel:+19046439002">904-643-9002</a>
+        <a href="mailto:office@twinpalms.us">office@twinpalms.us</a>
+      </div>
+      <div class="topbar-note">Independent. Local. Client-focused.</div>
+    </div>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Twin Palms Insurance Group home">
+        <img class="site-logo" id="headerLogo" src="logo-header.png" data-default-logo="logo-header.png" data-scroll-logo="logo-scroll.png" alt="Twin Palms Insurance Group, The Ward Agency">
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#services">Insurance</a>
+        <a href="#process">Our Process</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <a href="#about">About</a>
+      <a href="#services">Insurance</a>
+      <a href="#process">Our Process</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="mobile-contact">
+      <a href="tel:+19046439002">Call 904-643-9002</a>
+      <a href="mailto:office@twinpalms.us">office@twinpalms.us</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg" aria-hidden="true">
+        <source src="hero-video.mp4" type="video/mp4">
+      </video>
+
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="hero-kicker">St. Augustine’s local insurance agency</span>
+          <h1>Protection shaped around the life you’ve built.</h1>
+          <p>Personalized home, auto, flood, and business insurance backed by trusted guidance, local experience, and access to major carriers.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Start Your Free Quote <span class="arrow">→</span></a>
+            <a class="btn btn-outline-light" href="#services">Explore Coverage</a>
+          </div>
+        </div>
+
+        <aside class="hero-trust" aria-label="Agency highlights">
+          <div>
+            <strong>20+</strong>
+            <span>Years of insurance experience</span>
+          </div>
+          <hr>
+          <div>
+            <strong>Local</strong>
+            <span>Family-owned, independent guidance</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Why choose Twin Palms">
+      <div class="container">
+        <div class="trust-strip-inner">
+          <div class="trust-item"><span class="trust-icon">✓</span>Independent & client-focused</div>
+          <div class="trust-item"><span class="trust-icon">⌂</span>Family-owned & local</div>
+          <div class="trust-item"><span class="trust-icon">★</span>20+ years of experience</div>
+          <div class="trust-item"><span class="trust-icon">◇</span>Customized coverage</div>
+          <div class="trust-item"><span class="trust-icon">↗</span>Ongoing personal support</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container intro-grid">
+        <div class="image-composition reveal">
+          <div class="image-main">
+            <img src="neighborhood.jpg" alt="Florida coastal home with a pool and tropical landscaping" loading="lazy" decoding="async">
+          </div>
+          <div class="image-small">
+            <img src="chairs.jpg" alt="Insurance advisor meeting with clients at a table" loading="lazy" decoding="async">
+          </div>
+          <div class="experience-badge">
+            <div><strong>20+</strong><span>Years serving clients</span></div>
+          </div>
+        </div>
+
+        <div class="intro-copy reveal">
+          <span class="section-kicker">Insurance made personal</span>
+          <h2>Local coverage. Personal service. Real peace of mind.</h2>
+          <p class="lead">Insurance should feel clear, thoughtful, and built around your actual needs—not pulled from a one-size-fits-all template.</p>
+          <p style="margin-top: 20px;">Twin Palms Insurance Group, The Ward Agency, helps homeowners, drivers, families, and business owners compare coverage with confidence. We take time to understand what matters, explain the choices, and remain available after the policy is in place.</p>
+
+          <ul class="feature-list">
+            <li>Access to major carriers</li>
+            <li>Clear coverage comparisons</li>
+            <li>Coastal Florida expertise</li>
+            <li>Free, no-pressure quotes</li>
+          </ul>
+
+          <a class="btn btn-dark" href="#contact">Talk to a Local Agent <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section principal-agent" id="principal-agent">
+      <div class="container agent-grid">
+        <div class="agent-photo-wrap reveal">
+        <img
+  class="agent-photo-placeholder"
+  src="ward.jpg"
+  alt="Allyson Ward, Principal Agent at Twin Palms Insurance Group"
+>
+          <div class="agent-role-card">
+            <strong>Allyson Ward</strong>
+            <span>Principal Agent</span>
+          </div>
+        </div>
+
+        <div class="agent-copy reveal">
+          <span class="section-kicker">Meet the Principal Agent</span>
+          <h2>Personal guidance starts with a trusted relationship.</h2>
+          <p class="lead">Allyson Ward leads Twin Palms Insurance Group, The Ward Agency, with an approach grounded in trust, care, and attentive service.</p>
+          <p>She believes insurance is about more than building policies. It is about listening carefully, understanding what each client needs, and helping families and business owners feel confident in the protection they choose.</p>
+          <p>From first-time homeowners to established business owners, Allyson and the Twin Palms team focus on providing responsive, dependable guidance that feels genuinely personal at every step.</p>
+
+          <div class="agent-values" aria-label="Principal agent values">
+            <span>Trust</span>
+            <span>Personalized Guidance</span>
+            <span>Responsive Service</span>
+          </div>
+
+          <a class="btn btn-dark" href="#contact">Talk to a Local Agent <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+	  
+	   <section class="section">
+      <div class="container">
+        <div class="coastal-grid reveal">
+          <div class="coastal-image" role="img" aria-label="Coastal Florida home with tropical landscaping"></div>
+          <div class="coastal-copy">
+            <span class="section-kicker">Coastal Florida expertise</span>
+            <h2>Protection built for coastal living.</h2>
+            <p>Living and working near the coast brings unique opportunities and risks. We help clients think through home, flood, wind, auto, property, and liability coverage with a practical local perspective.</p>
+            <a class="btn btn-primary" href="tel:+19046439002">Call 904-643-9002 <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-heading-row reveal">
+          <div>
+            <span class="section-kicker">Coverage options</span>
+            <h2>Insurance solutions designed around you.</h2>
+          </div>
+          <p class="lead">Explore flexible personal and commercial coverage with guidance that makes the details easier to understand.</p>
+        </div>
+
+        <div class="service-tabs reveal" role="tablist" aria-label="Insurance categories">
+          <button class="service-tab active" type="button" role="tab" aria-selected="true" data-service-filter="personal">Personal Insurance</button>
+          <button class="service-tab" type="button" role="tab" aria-selected="false" data-service-filter="business">Business Insurance</button>
+        </div>
+
+        <div class="services-grid" style="margin-top: 28px;">
+          <article class="service-card reveal" data-service="personal">
+            <div>
+              <span class="service-icon">⌂</span>
+              <h3>Home Insurance</h3>
+              <p>Protect your home, personal belongings, and financial security with coverage matched to your property.</p>
+            </div>
+            <a class="service-link" href="#contact">Request details <span>→</span></a>
+          </article>
+
+          <article class="service-card reveal" data-service="personal">
+            <div>
+              <span class="service-icon">≈</span>
+              <h3>Flood Insurance</h3>
+              <p>Add dedicated protection for flood and water-related risks that are especially important in coastal Florida.</p>
+            </div>
+            <a class="service-link" href="#contact">Request details <span>→</span></a>
+          </article>
+
+          <article class="service-card reveal" data-service="personal">
+            <div>
+              <span class="service-icon">◇</span>
+              <h3>Auto Insurance</h3>
+              <p>Stay protected on the road with practical coverage for your vehicle, passengers, and liability needs.</p>
+            </div>
+            <a class="service-link" href="#contact">Request details <span>→</span></a>
+          </article>
+
+          <article class="service-card reveal" data-service="personal">
+            <div>
+              <span class="service-icon">＋</span>
+              <h3>Personal Umbrella</h3>
+              <p>Extend your liability protection beyond the limits of your home and auto policies for added confidence.</p>
+            </div>
+            <a class="service-link" href="#contact">Request details <span>→</span></a>
+          </article>
+
+          <article class="service-card" data-service="business" hidden>
+            <div>
+              <span class="service-icon">▦</span>
+              <h3>Business Insurance</h3>
+              <p>Build a flexible package that reflects your company’s operations, assets, team, and everyday risks.</p>
+            </div>
+            <a class="service-link" href="#contact">Request details <span>→</span></a>
+          </article>
+
+          <article class="service-card" data-service="business" hidden>
+            <div>
+              <span class="service-icon">↗</span>
+              <h3>Commercial Auto</h3>
+              <p>Protect business-owned vehicles, drivers, and liability exposures while your team is on the road.</p>
+            </div>
+            <a class="service-link" href="#contact">Request details <span>→</span></a>
+          </article>
+
+          <article class="service-card" data-service="business" hidden>
+            <div>
+              <span class="service-icon">▤</span>
+              <h3>Commercial Property</h3>
+              <p>Help safeguard your building, equipment, inventory, furnishings, and other physical business assets.</p>
+            </div>
+            <a class="service-link" href="#contact">Request details <span>→</span></a>
+          </article>
+
+          <article class="service-card" data-service="business" hidden>
+            <div>
+              <span class="service-icon">◎</span>
+              <h3>Liability & Workers’ Comp</h3>
+              <p>Address common liability claims and help protect employees and your company after workplace injuries.</p>
+            </div>
+            <a class="service-link" href="#contact">Request details <span>→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process" id="process">
+      <div class="container">
+        <div class="section-heading-row reveal">
+          <div>
+            <span class="section-kicker">A simpler experience</span>
+            <h2>A clear path to the right coverage.</h2>
+          </div>
+          <p class="lead">We keep the process straightforward, explain the tradeoffs, and help you make a confident decision.</p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-step reveal">
+            <span class="step-number">01</span>
+            <h3>Start with a conversation</h3>
+            <p>We learn about your property, lifestyle, business, priorities, and the risks you want to address.</p>
+          </article>
+
+          <article class="process-step reveal">
+            <span class="step-number">02</span>
+            <h3>Review your options</h3>
+            <p>We compare available coverage and explain the differences in plain language.</p>
+          </article>
+
+          <article class="process-step reveal">
+            <span class="step-number">03</span>
+            <h3>Choose with confidence</h3>
+            <p>You select practical protection based on your needs—not unnecessary complexity.</p>
+          </article>
+
+          <article class="process-step reveal">
+            <span class="step-number">04</span>
+            <h3>Count on ongoing support</h3>
+            <p>As life and business change, we remain available to answer questions and update coverage.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+   
+
+    <section class="section testimonials" id="reviews">
+      <div class="container">
+        <div class="reviews-top reveal">
+          <div>
+            <span class="section-kicker">Client experiences</span>
+            <h2>Trusted guidance, backed by five-star service.</h2>
+          </div>
+          <div class="rating-card" aria-label="Five-star rating">
+            <span class="rating-number">5.0</span>
+            <span><span class="stars">★★★★★</span><small>Google rating</small></span>
+          </div>
+        </div>
+
+        <div class="review-track-wrap reveal">
+          <div class="review-track" id="reviewTrack">
+            <article class="review-card">
+              <div class="review-quote">“</div>
+              <blockquote>Allyson is always available to speak with my customers and navigate insurance matters, including complex roof concerns. On top of it all, she saves them money.</blockquote>
+              <div class="review-author"><div><strong>Jenn B.</strong><span>Local business owner</span></div><span class="stars">★★★★★</span></div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-quote">“</div>
+              <blockquote>She helped us with auto and homeowners insurance, made the process simple, and found the same coverage at a significantly lower price.</blockquote>
+              <div class="review-author"><div><strong>Brian T.</strong><span>Home and auto client</span></div><span class="stars">★★★★★</span></div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-quote">“</div>
+              <blockquote>Professional, knowledgeable, and swift. Working with Twin Palms was a no-brainer after our conversation about business insurance.</blockquote>
+              <div class="review-author"><div><strong>Jefferey P.</strong><span>Business insurance client</span></div><span class="stars">★★★★★</span></div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-quote">“</div>
+              <blockquote>She understood my needs and concerns and provided the right coverage for my new home. I look forward to working with her in the future.</blockquote>
+              <div class="review-author"><div><strong>Patricia F.</strong><span>Home insurance client</span></div><span class="stars">★★★★★</span></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="review-controls">
+          <button class="review-button" id="reviewPrev" type="button" aria-label="Previous review">←</button>
+          <button class="review-button" id="reviewNext" type="button" aria-label="Next review">→</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="areas">
+      <div class="container areas-grid">
+        <div class="area-photo reveal">
+          <div class="area-photo-label">
+            <strong>Florida coverage with a local touch.</strong>
+            <span>Personal and commercial insurance guidance close to home.</span>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <span class="section-kicker">Proudly serving Florida</span>
+          <h2>Rooted in St. Augustine. Ready to help.</h2>
+          <p class="lead" style="margin-top: 24px;">Twin Palms Insurance Group serves clients in St. Augustine and nearby communities with responsive service and insurance solutions tailored to local needs.</p>
+          <div class="area-list">
+            <div>St. Augustine</div>
+            <div>Ponte Vedra</div>
+            <div>West Palm Beach</div>
+            <div>Nearby Florida communities</div>
+          </div>
+          <a class="btn btn-dark" href="#contact" style="margin-top: 32px;">Contact the Agency <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <span class="section-kicker">Let’s protect what matters</span>
+          <h2>Your peace of mind is our priority.</h2>
+          <p>Tell us what type of coverage you need. A local agent will follow up to help you review your options.</p>
+
+          <div class="contact-details">
+            <a class="contact-detail" href="tel:+19046439002">
+              <span class="contact-detail-icon">☎</span>
+              <span><strong>Call the agency</strong><br>904-643-9002</span>
+            </a>
+            <a class="contact-detail" href="mailto:office@twinpalms.us">
+              <span class="contact-detail-icon">✉</span>
+              <span><strong>Email us</strong><br>office@twinpalms.us</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-cta reveal">
+          <span class="contact-cta-label">Start your quote online</span>
+          <h3>Ready to explore your coverage options?</h3>
+          <p>Use our secure external quote page to share your information and begin the process. A Twin Palms agent will follow up to help you review the available options.</p>
+          <a class="btn btn-primary" href="https://twinpalms.insuredmine.com/contact-us/dist/" target="_blank" rel="noopener noreferrer">Request a Free Quote <span class="arrow">→</span></a>
+         
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a class="brand" href="#home" aria-label="Twin Palms Insurance Group home">
+          <img class="site-logo" src="logo-footer.png" alt="Twin Palms Insurance Group, The Ward Agency">
+        </a>
+        <p>Personalized insurance guidance for homeowners, drivers, families, and businesses throughout St. Augustine and nearby Florida communities.</p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Explore</h4>
+        <nav>
+          <a href="#about">About</a>
+          <a href="#services">Insurance</a>
+          <a href="#process">Our Process</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <nav>
+          <a href="tel:+19046439002">904-643-9002</a>
+          <a href="mailto:office@twinpalms.us">office@twinpalms.us</a>
+          <a href="https://twinpalms.insuredmine.com/contact-us/dist/" target="_blank" rel="noopener">Get a Free Quote</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> Twin Palms Insurance Group, The Ward Agency. All rights reserved.</span>
+      <span>Insurance coverage is subject to carrier terms, conditions, and underwriting.</span>
+    </div>
+  </footer>
+
+  <script>
+    const siteHeader = document.getElementById('siteHeader');
+    const headerLogo = document.getElementById('headerLogo');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+
+    // Preload the alternate header logo so the swap is immediate.
+    const scrollLogoPreload = new Image();
+    scrollLogoPreload.src = headerLogo.dataset.scrollLogo;
+
+    function updateHeader() {
+      const isScrolled = window.scrollY > 55;
+      siteHeader.classList.toggle('scrolled', isScrolled);
+
+      const nextLogo = isScrolled
+        ? headerLogo.dataset.scrollLogo
+        : headerLogo.dataset.defaultLogo;
+
+      if (headerLogo.getAttribute('src') !== nextLogo) {
+        headerLogo.setAttribute('src', nextLogo);
+      }
+    }
+
+    function closeMenu() {
+      if (!menuToggle || !mobileMenu) return;
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.remove('open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('menu-open');
+    }
+
+    if (menuToggle && mobileMenu) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        menuToggle.classList.toggle('active', isOpen);
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+        document.body.classList.toggle('menu-open', isOpen);
+      });
+
+      mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+    }
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
+
+    const serviceTabs = document.querySelectorAll('[data-service-filter]');
+    const serviceCards = document.querySelectorAll('[data-service]');
+
+    serviceTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const filter = tab.dataset.serviceFilter;
+
+        serviceTabs.forEach(item => {
+          const active = item === tab;
+          item.classList.toggle('active', active);
+          item.setAttribute('aria-selected', String(active));
+        });
+
+        serviceCards.forEach(card => {
+          card.hidden = card.dataset.service !== filter;
+          if (!card.hidden) {
+            requestAnimationFrame(() => card.classList.add('visible'));
+          }
+        });
+      });
+    });
+
+    const revealItems = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach(item => revealObserver.observe(item));
+
+    const reviewTrack = document.getElementById('reviewTrack');
+    const reviewCards = [...reviewTrack.children];
+    const reviewPrev = document.getElementById('reviewPrev');
+    const reviewNext = document.getElementById('reviewNext');
+    let reviewIndex = 0;
+
+    function visibleReviewCount() {
+      if (window.innerWidth <= 760) return 1;
+      if (window.innerWidth <= 1050) return 2;
+      return 3;
+    }
+
+    function updateReviews() {
+      const visibleCount = visibleReviewCount();
+      const maxIndex = Math.max(0, reviewCards.length - visibleCount);
+      reviewIndex = Math.min(reviewIndex, maxIndex);
+      const cardWidth = reviewCards[0].getBoundingClientRect().width;
+      const gap = 20;
+      reviewTrack.style.transform = `translateX(-${reviewIndex * (cardWidth + gap)}px)`;
+    }
+
+    reviewPrev.addEventListener('click', () => {
+      reviewIndex = Math.max(0, reviewIndex - 1);
+      updateReviews();
+    });
+
+    reviewNext.addEventListener('click', () => {
+      const maxIndex = Math.max(0, reviewCards.length - visibleReviewCount());
+      reviewIndex = Math.min(maxIndex, reviewIndex + 1);
+      updateReviews();
+    });
+
+    window.addEventListener('resize', updateReviews);
+    updateReviews();
+
+    const heroVideo = document.querySelector('.hero-video');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function updateHeroMotionPreference() {
+      if (!heroVideo) return;
+
+      if (reduceMotion.matches) {
+        heroVideo.pause();
+      } else {
+        const playPromise = heroVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // The poster remains visible when a browser blocks autoplay.
+          });
+        }
+      }
+    }
+
+    updateHeroMotionPreference();
+    reduceMotion.addEventListener?.('change', updateHeroMotionPreference);
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
